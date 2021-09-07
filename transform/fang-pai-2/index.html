@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>CSS3实现3D图片翻转洗牌动画特效</title>
+	<meta name="keywords" content="CSS3特效,动画翻转,3D动画,缩略图特效,图片特效,3D翻转,网页特效">
+	<meta name="description" content="一款CSS3实现3D图片翻转洗牌动画特效下载，该缩略图预览特效是一款鼠标悬停到缩略图片3D翻转切换显示JS代码，支持移动设备、触摸设备使用。">
+	<meta name="viewport" content="width=800, user-scalable=no">
+	<link rel="stylesheet" href="./resource/kort.css">
+</head>
+
+<body class="keBody">
+	<h1 class="keTitle">CSS3实现3D图片翻转洗牌动画特效</h1>
+	<div class="kePublic">
+		<h2>Default</h2>
+		<div class="thumb kort">
+			<img src="./resource/1.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/2.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/3.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/4.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/5.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/6.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/7.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/8.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/9.jpg" width="200" height="200" class="present"
+				style="margin-left: 0px;">
+		</div>
+
+		<h2>Concave</h2>
+		<div class="thumb kort concave">
+			<img src="./resource/1.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/2.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/3.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/4.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/5.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/6.jpg" width="200" height="200" class="present"
+				style="margin-left: 0px;">
+			<img src="./resource/7.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/8.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/9.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+		</div>
+
+		<h2>Stack</h2>
+		<div class="thumb kort stack">
+			<img src="./resource/1.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/2.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/3.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/4.jpg" width="200" height="200" class="" style="margin-left: 0px;">
+			<img src="./resource/5.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/6.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/7.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/8.jpg" width="200" height="200" style="margin-left: 0px;" class="">
+			<img src="./resource/9.jpg" width="200" height="200" style="margin-left: 0px;"
+				class="present">
+		</div>
+
+		<script src="./resource/kort.js"></script>
+
+		<script>
+			// FF OS X animates this at 3-4 FPS when there are box-shadows
+			// on the images, hence the hack... Ugh :/
+			if (navigator.userAgent.match(/firefox/gi)) {
+				[].slice.call(document.querySelectorAll('.thumb img')).forEach(function (el) { el.style.boxShadow = 'none'; });
+			}
+		</script>
+	</div>
+</body>
+
+</html>
