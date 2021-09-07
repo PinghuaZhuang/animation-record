@@ -10,9 +10,16 @@
 
 
 
-## 🤣 SVG / CANVAS / WEBGL
+## 🤔 SVG / CANVAS / WEBGL
 
 TODO...
+
+
+
+## 😁 Parallax
+
++ https://simpleparallax.com/#examples: scoll
++ https://github.com/wagerfield/parallax: fullPage
 
 
 
