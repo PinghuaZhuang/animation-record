@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css-filter</title>
+    <script src="https://unpkg.com/any-touch/dist/any-touch.umd.min.js"></script>
+    <style>
+      body {
+        /* background-color: black; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .p-a {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .bgsetting {
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+      }
+
+      #demo {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        left: 0;
+        right: 0;
+        border: 2px dashed black;
+        margin-left: 20px;
+      }
+
+      #demo .bg {
+        width: 100%;
+        height: 100%;
+        background-image: url("https://cdn.jsdelivr.net/gh/PinghuaZhuang/note@master/bg.15qkrrtazzr4.jpg");
+        opacity: 0.2;
+      }
+
+      #demo .mask {
+        right: 0;
+        bottom: 0;
+        width: 50%;
+        height: 50%;
+        margin: auto;
+
+        /* 手机壳 */
+        -webkit-mask-image: url("https://cdn.jsdelivr.net/gh/PinghuaZhuang/note@master/mask.61thqgyjxqs0.png");
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: 100% 100%;
+        -webkit-mask-position: center center;
+        background-image: url("https://cdn.jsdelivr.net/gh/PinghuaZhuang/note@master/bg.15qkrrtazzr4.jpg");
+        /* background-size: 300px 300px; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="toggle">切换全景</button>
+
+    <!-- 手机背景图, 自定义可替换的 -->
+    <div id="demo">
+      <div class="bg bgsetting p-a"></div>
+      <div class="mask bgsetting p-a"></div>
+    </div>
+
+    <script type="module">
+      const bgEle = document.querySelector("#demo .bg");
+      const maskEle = document.querySelector("#demo .mask");
+
+      cacheXY();
+
+      each((ele) => {
+        const at = new AnyTouch(ele);
+        at.on("pan", setStyle);
+        at.on("panend", ({ displacementX, displacementY }) => {
+          each((ele) => cacheXY(displacementX, displacementY, ele));
+        });
+      });
+
+      document.querySelector('.toggle').onclick = () => {
+        bgEle.classList.toggle('bg');
+      }
+
+      function getHalfWH(ele) {
+        const { width, height } = ele.getBoundingClientRect();
+        return {
+          halfWidth: width / 2,
+          halfHeight: height / 2,
+        };
+      }
+
+      function cacheXY(x, y, ele) {
+        if (x == null) {
+          const { width, height } = maskEle.getBoundingClientRect();
+          bgEle._x = 0;
+          bgEle._y = 0;
+          maskEle._x = -width / 2;
+          maskEle._y = -height / 2;
+          maskEle.style.backgroundSize = `${bgEle.offsetWidth}px ${bgEle.offsetHeight}px`;
+          return;
+        }
+        return {
+          x: (ele._x += x),
+          y: (ele._y += y),
+        };
+      }
+
+      function setStyle({ displacementX, displacementY, x, y }) {
+        [bgEle, maskEle].forEach(
+          (ele) =>
+            (ele.style.backgroundPosition = `${ele._x + displacementX}px ${
+              ele._y + displacementY
+            }px`)
+        );
+      }
+
+      function each(fn) {
+        [bgEle, maskEle].forEach((ele) => fn(ele));
+      }
+    </script>
+  </body>
+</html>
