@@ -14,6 +14,7 @@
 + [翻牌特效](http://www.internetke.com/jsEffects/2015080332/)
 + [有趣的单标签像素图](http://nightcatsama.github.io/My-Animate/pixels/)
 + [好看的SVG插图](https://undraw.co/illustrations)
++ [css-聊天气泡框](https://nicolasgallagher.com/pure-css-speech-bubbles/demo/)
 
 ## JS
 
@@ -38,4 +39,3 @@
 ## 🤔 SVG / CANVAS / WEBGL
 
 TODO...
-
